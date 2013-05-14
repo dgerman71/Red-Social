@@ -1,0 +1,8 @@
+<h3>Usuario</h3>
+<ul class="users">
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.name, user %> Registrado <%= user.created_at.to_date %>
+    </li>
+  <% end %>
+</ul>
