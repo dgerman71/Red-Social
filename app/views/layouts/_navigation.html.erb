@@ -1,21 +1,38 @@
-<%= link_to "Red Social", root_path, :class => 'brand' %>
+<%= label_tag "Red Social", nil , :class => 'brand' %>
 <ul class="nav">
+  <li>
+  <%= link_to "Inicio", root_path %>
+  </li>
   <% if user_signed_in? %>
     <li>
-    <%= link_to 'Salir', destroy_user_session_path, :method=>'delete' %>
+      <%= link_to 'Editar Cuenta', edit_user_registration_path %>
     </li>
   <% else %>
     <li>
-    <%= link_to 'Login', new_user_session_path %>
+  <%= link_to 'Login', new_user_session_path %>
     </li>
   <% end %>
   <% if user_signed_in? %>
     <li>
-    <%= link_to 'Editar Cuenta', edit_user_registration_path %>
+      <%= link_to 'Salir', destroy_user_session_path, :method=>'delete' %>
     </li>
-  <% else %>
+    <li>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </li>
+    <li>
+      <div style="text-align: right; height: 38px; font-size:17px; line-height: 38px;">Bienvenido &nbsp;<%= current_user.name.capitalize %></div>
+    </li>
+    <% else %>
     <li>
     <%= link_to 'Registro', new_user_registration_path %>
     </li>
   <% end %>
+  
 </ul>
+
+
+
+
+   
+    
+
