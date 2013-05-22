@@ -1,26 +1,39 @@
-<h2>Editar Usuario</h2>
+<h3><em><p class="text-info">Editar Usuario</p></em></h3>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-<p><%= f.label :nombre %><br />
+  <% if resource.errors.any? %>
+  <div class="alert alert-error">
+      <a class="close" data-dismiss="alert">&#215;</a>
+ 
+      <h2><%= pluralize(resource.errors.count, "error") %></h2>
+
+      <ul>
+      <% resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<p><%= f.label :nombre %>
 <%= f.text_field :name %></p>
 
-  <div><%= f.label :email %><br />
+  <div><%= f.label :email %>
   <%= f.email_field :email %></div>
 
   <div><%= f.label :contraseña %> <i>(dejar en blanco si no desea cambiarla)</i><br />
   <%= f.password_field :password, :autocomplete => "off" %></div>
 
-  <div><%= f.label :confirmar_contraseña %><br />
+  <div><%= f.label :confirmar_contraseña %>
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.label :contraseña_actual %> <i>(necesitamos tu contraseña actual para confirmar los cambios)</i><br />
-  <%= f.password_field :current_password %></div>
+  <div><%= f.label :contraseña_actual %> <i>(necesitamos tu contraseña actual para confirmar los cambios)</i><br/>
+  <%= f.password_field :current_password %></div><br/>
 
-  <div><%= f.submit "Actualizar" %></div>
+  <div><%= f.submit "Actualizar", :class=>"btn btn-success" %></div>
 <% end %>
 
-<h3>Cancelación de la Cuenta</h3>
+
+<h3><em><p class="text-info">Cancelación de la Cuenta</p></em></h3>
 
 <p><%= link_to "Cancelar Cuenta", registration_path(resource_name), :data => { :confirm => "Estás seguro?" }, :method => :delete %>.</p>
 

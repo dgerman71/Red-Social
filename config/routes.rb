@@ -12,4 +12,6 @@ Red::Application.routes.draw do
   devise_for :users
   resources :users
   resources :perfil, :only => [:index, :show, :update]
+
+  match "nombre/:nombre" => "users#show"
 end

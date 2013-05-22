@@ -8,18 +8,20 @@ class Perfil < ActiveRecord::Base
 
 	
 
-	#TamaÃ±os
+	#Tamaños
 	validates :nombre,:apellidos,:ciudad, :length =>
 	{
-		:maximum=> 30,
-		:minimum=> 6,
+		:maximum=> 30
+		
 	},
-	:format=> {:with=>/^[A-Za-z]*$/,
-	:message=>"Solamente letras, por favor"}
+	:format=> {:with=>/^[a-zA-Z]*( |\S)[a-zA-Z]*$/,
+	:message=>"%{value}, formato no permitido"}
 
-	validates :ciudad, :length =>{:maximum=>30},
-	:format=> {:with=>/^[A-Za-z]*$/,
-	:message=>"Solamente letras, por favor"}
+
+	validates :fecha_nacimiento,
+	:format =>{:with => /^\d{4}\-\d{2}\-\d{2}$/,
+	:message=>"%{value}, incorrecta"}
+
 
 
 

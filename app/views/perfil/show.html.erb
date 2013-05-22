@@ -1,4 +1,4 @@
-<h2>Editar Perfil de <%= current_user.name.capitalize %></h2>
+<h3><em><p class="text-info">Editar Perfil de <%= current_user.name.capitalize %></p></em></h3>
 
 <%= form_for @perfil, :url=>{:action=>:update}, :html=>{:method=>:put} do |f| %>
  <% if @perfil.errors.any? %>
@@ -15,30 +15,30 @@
     </div>
   <% end %>
 
-<p><%= f.label :nombre %><br />
+<p><%= f.label :nombre %>
 <%= f.text_field :nombre %></p>
 
-  <div><%= f.label :apellidos %><br />
+  <div><%= f.label :apellidos %>
   <%= f.text_field :apellidos %></div>
 
-  <div><%= f.label :ciudad %><br />
+  <div><%= f.label :ciudad %>
   <%= f.text_field :ciudad %></div>
 
-  <div><%= f.label :sexo %><br />
+  <div><%= f.label :sexo %>
   <%= f.radio_button :sexo, "Hombre" %> Hombre
   <%= f.radio_button :sexo, "Mujer" %> Mujer
-   </div>
+   </div><br/>
 
-  <div><%= f.label :fecha_nacimiento, "Fecha de nacimiento" %><br />
+  <div><%= f.label :fecha_nacimiento, "Fecha de nacimiento" %>
   <%= f.date_select :fecha_nacimiento,
   :start_year => 1930,
   :end_year => Time.now.year,
   :include_blank =>true,
-  :order => [:day, :month, :year] %></div>
+  :order => [:day, :month, :year] %></div><br/>
 
 
 
-  <div><%= f.submit "Actualizar" %></div>
+  <div><%= f.submit "Actualizar", :class=>"btn btn-success" %></div>
 <% end %>
 
 

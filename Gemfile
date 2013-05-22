@@ -19,3 +19,6 @@ gem "rb-fsevent", ">= 0.9.3", :group => :development, :require => false
 gem "rb-fchange", ">= 0.0.6", :group => :development, :require => false
 gem "bootstrap-sass", ">= 2.3.0.0"
 gem "devise", ">= 2.2.3"
+gem 'gravatar_image_tag'
+gem 'will_paginate', '>= 3.0.0'
+gem 'will_paginate-bootstrap'
