@@ -1,23 +1,25 @@
 <% if existe_usuario(@user) %>
-<h3>Perfil Público de <%= nombre_perfil(@user) %></h3>
 
+<h3><em><p class="text-info">Perfil Público de <%= nombre_perfil(@user) %></p></em></h3>
 		<div class="row">
   			<div class="span4">
   			<%= gravatar_image_tag(@user.email, :alt => @user.name,:class=>"thumbnail",:gravatar => { :size => 300 })  %>
   			</div>
   			<div class="span5 ">
-  				<h3><%= nombre_perfil(@user) %></h3>
-  				<p>
-  					<small>
-  						<p>Ciudad: <%= ciudad_perfil(@user) %> </p>
-  						<p>Sexo: <%= sexo_perfil(@user) %> </p>
-  					</small>
-  				
+  				<h3><em><p class="text-info"><%= nombre_perfil(@user) %></p></em></h3>
+          
+  					
+  						<h5>Ciudad: <%= ciudad_perfil(@user) %></h5>
+  						<h5>Sexo: <%= sexo_perfil(@user) %> </h5>
+  					
+  				<%= render :partial=>"users/contacto", :locals =>{:destinatario=> @user.email,
+            :usuario =>@user} %>
+
   			</div>
   		</div>
   		<div class="row">
   			<div class="span4">
-
+          
   			</div>
 
   		</div>

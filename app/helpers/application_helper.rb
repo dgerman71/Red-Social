@@ -30,5 +30,10 @@ module ApplicationHelper
 			true
 		end
 	end
+
+    def comprobar(params)
+		!params[:asunto].blank? and !params[:mensaje].blank? and Email.enviar(params).deliver
+	end
 end
+
 
