@@ -14,5 +14,15 @@ class Email < ActionMailer::Base
    mail to: @destinatario,
         subject: "Red Social - #{@asunto}"
   end
+
+  def solicitar_amistad(usuario,amigo)
+    @usuario = usuario
+    @amigo = amigo
+
+    mail to: amigo.email,
+         subject: "Solicitud de amistad de #{amigo.name.capitalize}"
+
+  end
 end
+
 

@@ -1,6 +1,7 @@
 <h3><em><p class="text-info">Usuarios Registrados</p></em></h3>
 
 <% @users.each do |user| %>
+<% if user != current_user %>
 	<div class="content">
 		<div class="row">
 			<!-- Insertar avatar -->
@@ -20,7 +21,7 @@
 			<!-- Fin descripción-->
 		</div>
 	</div>
-
+<% end %>
 <% end %>
 
 

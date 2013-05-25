@@ -1,28 +1,35 @@
 <% if existe_usuario(@user) %>
 
 <h3><em><p class="text-info">Perfil Público de <%= nombre_perfil(@user) %></p></em></h3>
+
 		<div class="row">
   			<div class="span4">
   			<%= gravatar_image_tag(@user.email, :alt => @user.name,:class=>"thumbnail",:gravatar => { :size => 300 })  %>
   			</div>
-  			<div class="span5 ">
+  			<div class="span3 ">
   				<h3><em><p class="text-info"><%= nombre_perfil(@user) %></p></em></h3>
-          
-  					
-  						<h5>Ciudad: <%= ciudad_perfil(@user) %></h5>
+              <h5>Ciudad: <%= ciudad_perfil(@user) %></h5>
   						<h5>Sexo: <%= sexo_perfil(@user) %> </h5>
-  					
-  				<%= render :partial=>"users/contacto", :locals =>{:destinatario=> @user.email,
+  					<%= render :partial=>"users/contacto", :locals =>{:destinatario=> @user.email,
             :usuario =>@user} %>
+          </div>
+        <div class="span3">
+          <%= render :partial=>"listado_amigos", :locals => {:usuario=> @user} %>
+        </div>
 
-  			</div>
   		</div>
   		<div class="row">
   			<div class="span4">
-          
-  			</div>
-
-  		</div>
+         <!-- Comprobar si existe amistad, sino mostrar el enlace -->
+         <% if existe_amistad?(current_user,@user) %>
+         <%= link_to "Solicitud de amistad a #{@user.name.capitalize}",
+         {:controller => "amistad",
+          :action => "crear",
+          :id => @user},
+          :confirm => "Realmente quiere solicitar su amistad?" %>
+  			<% end %>
+        </div>
+      </div>
 <% else %>
 	
 	Lo sentimos nombre de usuario no válido 
